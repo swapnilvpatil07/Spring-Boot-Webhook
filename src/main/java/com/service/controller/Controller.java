@@ -22,7 +22,7 @@ public class Controller {
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	public @ResponseBody WebhookResponse getStockInfo(@RequestBody String body) {
-
+		System.out.println("Service Called..");
 		StockInfo info = new Utility().getStockInfo("infosys");
 		return new WebhookResponse("Showing stock price: " + info.getL(), "Stock Price");
 	}

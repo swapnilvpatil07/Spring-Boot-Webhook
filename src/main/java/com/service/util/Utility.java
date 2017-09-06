@@ -14,10 +14,10 @@ import com.service.model.StockInfo;
 
 public class Utility {
 
-	private static String readQuotes(String org) {
+	public static String readQuotes(String org) {
 		// TODO Auto-generated method stub
 		HashMap<String, String> list = new HashMap<>();
-		String csvFile = "src/main/resources/quotes.csv";
+		String csvFile = "resources/quotes.csv";
 		String cvsSplitBy = ",";
 		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 			String line;
@@ -32,7 +32,7 @@ public class Utility {
 		return getStockCd(list, org);
 	}
 
-	private static String getStockCd(Map list, String org) {
+	public static String getStockCd(Map list, String org) {
 		String stkCd = "";
 		int cnt = 0;
 		Iterator<Map.Entry<String, String>> it = list.entrySet().iterator();
@@ -53,20 +53,22 @@ public class Utility {
 		RestTemplate restTemplate = new RestTemplate();
 		StockInfo stockInfo = null;
 		String stkCode = readQuotes(CmpNm);
-		StringBuilder url = new StringBuilder()
+		stockInfo = new StockInfo();
+		stockInfo.setL("2352");
+		/*StringBuilder url = new StringBuilder()
 				.append("http://finance.google.co.uk/finance/info?client=ig&q=NSE:" + stkCode.toUpperCase());
 		String response = "";
 		// Call service
 		try {
 			response = restTemplate.getForObject(url.toString(), String.class);
 			response = response.trim().replace("//", "").replaceAll("\\[", "").replaceAll("\\]", "");
-			ObjectMapper mapper = new ObjectMapper();
-			stockInfo = mapper.readValue(response, StockInfo.class);
+			//ObjectMapper mapper = new ObjectMapper();
+			//stockInfo = mapper.readValue(response, StockInfo.class);
 		} catch (Exception e) {
 			// TODO: handle exception
 			response = "";
-		}
-		System.out.println("RES: " + response);
+		}*/
+		//System.out.println("RES: " + response);
 		return stockInfo;
 	}
 }
