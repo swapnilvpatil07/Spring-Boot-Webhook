@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.service.model.StockInfo;
+import com.service.util.Utility;
+
 @RestController
 public class Controller {
 	@RequestMapping(value = "/webhook/{test}", method = RequestMethod.GET)
@@ -19,7 +22,8 @@ public class Controller {
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	public @ResponseBody WebhookResponse getStockInfo(@RequestBody String body) {
-		
-		return new WebhookResponse("Hello!","sdsdsad");
+
+		StockInfo info = new Utility().getStockInfo("infosys");
+		return new WebhookResponse("Showing stock price: " + info.getL(), "Stock Price");
 	}
 }
