@@ -1,4 +1,4 @@
-package com.service;
+package com.service.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
