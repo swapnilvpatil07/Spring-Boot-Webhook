@@ -18,8 +18,8 @@ public class Controller {
 	}
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> getStockInfo(@RequestBody String body) {
+	public @ResponseBody WebhookResponse getStockInfo(@RequestBody String body) {
 		
-		return new ResponseEntity<String>("Hey, its me", HttpStatus.OK);
+		return new WebhookResponse("Hello!","sdsdsad");
 	}
 }
